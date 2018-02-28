@@ -7,10 +7,13 @@
   #include "database.h"
 #endif
 
+struct StudentRecord{
+  std::string name;
+  std::string surname;
+  std::string studentNo;
+  std::string classRecord;
+};
 
-#define STUB(method) void method(){\
-  std::cout<<"Todo: "<<#method<<"\n";\
-}
 
 STUB(addStudent)
 STUB(readDB)
@@ -36,6 +39,33 @@ int displayMenu(){
   char choice;
 
   std::cin>>choice;
+
+  switch (choice) {
+    case '0':
+      addStudent();
+      break;
+    case '1':
+      readDB();
+      break;
+    case '2':
+      saveDB();
+      break;
+    case '3':
+      displayStudentData();
+      break;
+    case '4':
+      gradeStudent();
+      break;
+    default:
+      std::cout << "Are you sure? y/n" <<std::endl;
+      char input;
+      std::cin>>input;
+      if(input=='y'){
+        choice=-1;
+      }
+      break;
+
+  }
   return choice;
 }
 
@@ -48,34 +78,7 @@ int main(int argc, char** argv){
     /* code */
     choice = displayMenu();
     // std::cout<<choice;
-    switch (choice) {
-      case '0':
-        addStudent();
-        break;
-      case '1':
-        readDB();
-        break;
-      case '2':
-        saveDB();
-        break;
-      case '3':
-        displayStudentData();
-        break;
-      case '4':
-        gradeStudent();
-        break;
-      default:
-        std::cout << "Are you sure? y/n" <<std::endl;
-        char input;
-        std::cin>>input;
-        if(input=='n'){
-          continue;
-        }else{
-          choice=-1;
-        }
-        break;
 
-    }
   } while(choice!=-1);
 
 
