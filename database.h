@@ -1,11 +1,11 @@
 #include <string>
 
 namespace MLLJET002{
-void clear(void);
+extern void clear(void);
 
 #define STUB(method) void method(){\
   std::cout<<"Todo: "<<#method<<"\n";\
 }
 
-int displayMenu();
+extern int displayMenu();
 }
