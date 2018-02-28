@@ -21,6 +21,10 @@ STUB(saveDB)
 STUB(displayStudentData)
 STUB(gradeStudent)
 
+void clear(){
+system("clear");
+}
+
 std::string options [6] = {
   "0: Add student",
   "1: Read database",
@@ -69,18 +73,18 @@ int displayMenu(){
   return choice;
 }
 
-int main(int argc, char** argv){
-  clear();
-  std::cout<<"Welcome to Student Records!"<<std::endl;
-
-  int choice;
-  do {
-    /* code */
-    choice = displayMenu();
-    // std::cout<<choice;
-
-  } while(choice!=-1);
-
-
-  return 0;
-}
+// int main(int argc, char** argv){
+//   clear();
+//   std::cout<<"Welcome to Student Records!"<<std::endl;
+//
+//   int choice;
+//   do {
+//     /* code */
+//     choice = displayMenu();
+//     // std::cout<<choice;
+//
+//   } while(choice!=-1);
+//
+//
+//   return 0;
+// }

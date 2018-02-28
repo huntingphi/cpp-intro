@@ -1,13 +1,16 @@
 
 .PHONY: run
 
-run: database
-	./database
+run: driver
+	./driver
 
-database: database.o
-	g++ -o database database.o -std=c++11
+driver: driver.o
+	g++ -o driver driver.o database.o -std=c++11
 
-database.o: database.cpp
+driver.o: driver.cpp
+	g++ -c driver.cpp -std=c++11
+
+driver.cpp: database.o
 	g++ -c database.cpp -std=c++11
 
 clean:

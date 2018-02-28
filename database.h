@@ -1,10 +1,9 @@
 #include <string>
 
-void clear(void)
-{
-system("clear");
-};
+void clear(void);
 
 #define STUB(method) void method(){\
   std::cout<<"Todo: "<<#method<<"\n";\
 }
+
+int displayMenu();

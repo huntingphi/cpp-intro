@@ -5,6 +5,7 @@
 #ifndef HEADERFILE
   #define HEADERFILE
   #include "driver.h"
+  #include "database.h"
 #endif
 
 
