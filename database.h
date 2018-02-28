@@ -1,5 +1,6 @@
 #include <string>
 
+namespace MLLJET002{
 void clear(void);
 
 #define STUB(method) void method(){\
@@ -7,3 +8,4 @@ void clear(void);
 }
 
 int displayMenu();
+}

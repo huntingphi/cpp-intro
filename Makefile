@@ -14,4 +14,4 @@ driver.cpp: database.o
 	g++ -c database.cpp -std=c++11
 
 clean:
-	rm -f database database.o
+	rm -f database database.o driver driver.o

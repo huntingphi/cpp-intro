@@ -7,6 +7,8 @@
   #include "database.h"
 #endif
 
+using namespace MLLJET002;
+
 struct StudentRecord{
   std::string name;
   std::string surname;
@@ -21,7 +23,7 @@ STUB(saveDB)
 STUB(displayStudentData)
 STUB(gradeStudent)
 
-void clear(){
+void MLLJET002::clear(){
 system("clear");
 }
 
@@ -34,7 +36,7 @@ std::string options [6] = {
   "q: Quit"
 };
 
-int displayMenu(){
+int MLLJET002::displayMenu(){
   std::cout<<"\nEnter a number from below (or anything else to quit ) and hit the Enter key..."<<std::endl;
 
   for (size_t i = 0; options[i] !=""; i++) {
