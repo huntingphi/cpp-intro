@@ -1,4 +1,5 @@
 #include <string>
+#include <vector>
 
 namespace MLLJET002{
 extern void clear(void);
@@ -9,3 +10,5 @@ extern void clear(void);
 
 extern int displayMenu();
 }
+
+extern std::vector<int> students;
