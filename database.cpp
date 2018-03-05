@@ -108,7 +108,7 @@ std::vector<std::string> getLines(){
   {
     while ( getline (dbFile,line) )
     {
-      std::cout << line << " - read into db\n";
+      std::cout << line << " - read into db successfully\n";
       lines.push_back(line);
     }
     dbFile.close();
