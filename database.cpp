@@ -1,6 +1,8 @@
 #include <string>
 #include <iostream>
 #include <cstdlib>
+#include <cstring>
+#include <fstream>
 
 #ifndef HEADERFILE
   #define HEADERFILE
@@ -17,8 +19,57 @@ struct StudentRecord{
 };
 
 
-STUB(addStudent)
-STUB(readDB)
+// STUB(addStudent)
+void addStudent(){
+  struct StudentRecord student;
+  // bool repeat = true;
+
+  // while(repeat == true){
+  // std::cin.clear();
+  std::string name, surname, studentNo, classRecord;
+  std::cout << "Enter student name:" << '\n';
+  std::getline(std::cin, name);
+  std::cout << "Enter student surname:" << '\n';
+  std::getline(std::cin,surname);
+  std::cout << "Enter student student number:" << '\n';
+  std::getline(std::cin,studentNo);
+  std::cout << "Enter student class record:" << '\n';
+  std::getline(std::cin,classRecord);
+  student.name = name;
+  student.surname = surname;
+  student.studentNo = studentNo;
+  student.classRecord = classRecord;
+  std::ofstream dbFile;
+  dbFile.open("db.txt",std::ios::app);
+  dbFile<<name<<","<<surname<<","<<studentNo<<","<<classRecord<<"\n";
+
+  std::cout << student.name << " was added successfully!\n";
+  // char input;
+  // while (input !='y'&&input!='n') {
+  //   std::cout << "Would you like to add another student? y/n" << '\n';
+  //   std::cin>>input;
+  // }
+  // if (input=='y') {
+  //   repeat=true;
+  // }else{
+  //   repeat=false;
+  // }
+
+  dbFile.close();
+  // }
+  // strcpy(student.name,name);
+  // strcpy(student.surname,surname);
+  // strcpy(student.studentNo,studentNo);
+  // strcpy(student.classRecord,classRecord);
+}
+
+
+// STUB(readDB)
+
+void readDB(){
+
+
+}
 STUB(saveDB)
 STUB(displayStudentData)
 STUB(gradeStudent)
@@ -45,6 +96,7 @@ int MLLJET002::displayMenu(){
   char choice;
 
   std::cin>>choice;
+  std::cin.ignore(1,'\n');
 
   switch (choice) {
     case '0':

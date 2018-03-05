@@ -8,7 +8,14 @@ extern void clear(void);
   std::cout<<"Todo: "<<#method<<"\n";\
 }
 
-extern int displayMenu();
+// void addStudent();
+// void readDB();
+// void saveDB();
+// void displayStudentData();
+// void gradeStudent();
+
+
+int displayMenu();
 }
 
-extern std::vector<int> students;
+// std::vector<int> students;
