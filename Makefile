@@ -1,8 +1,6 @@
 
-.PHONY: run
+.PHONY: driver
 
-run: driver
-	./driver
 
 driver: driver.o
 	g++ -o driver driver.o database.o -std=c++11
@@ -15,3 +13,6 @@ driver.cpp: database.o
 
 clean:
 	rm -f database database.o driver driver.o
+
+run: driver
+		./driver

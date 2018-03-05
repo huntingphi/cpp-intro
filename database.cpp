@@ -15,6 +15,7 @@
 using namespace MLLJET002;
 
 std::vector<struct StudentRecord> students;
+bool db_loaded = false;
 
 
 // STUB(addStudent)
@@ -146,14 +147,18 @@ void MLLJET002::readStudents(std::vector<std::string> v){
 
 //Loads the file records into the students vector by using the functions defined above
 void MLLJET002::readDB(){
+  db_loaded = true;
   readStudents(getLines());
 
 }
 
 //Outputs the vector to a file in the specified format (comma seperated)
 void MLLJET002::saveDB(){
+  if (db_loaded==false) {
+  std::cout << "The database file must be read before it can be saved." << '\n';
+}else{
   std::ofstream dbFile;
-  dbFile.open("db.txt",std::ios::app);
+  dbFile.open("db.txt");
   std::string name, surname, studentNo, classRecord;
     for(std::vector<int>::size_type i = 0; i != students.size(); i++) {
       name = students[i].name;
@@ -166,6 +171,7 @@ void MLLJET002::saveDB(){
     dbFile.close();
 
     std::cout << "Database Saved!" << '\n';
+}
 }
 
 //Displays details of a student when given a student number
