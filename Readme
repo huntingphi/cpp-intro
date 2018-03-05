@@ -1,0 +1,22 @@
+CSC3022H Assignment 1
+
+Files and their workings:
+The following files make up the program:
+
+ - driver.cpp/.h              : Contains main method and menu loop
+ - database.cpp/.h          : Database object that contains the menu methods.
+ - Makefile                 : The makefile for the project
+ - db.txt                     : An example text file using commas to delimit values
+
+ How to compile, run and clean:
+  In terminal:
+    make - to compile
+    make run - to compile and run
+    make clean - to clean
+
+  Assumptions:
+    1)  To check for duplicates before inserting the database must first be read.
+        If data is entered before the database is loaded the program will not pick up duplicates.
+
+    2)  Before the database can be saved it must first be loaded.
+        The program will not allow a save command before a load command.
