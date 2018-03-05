@@ -14,20 +14,13 @@
 
 using namespace MLLJET002;
 
-struct StudentRecord{
-  std::string name;
-  std::string surname;
-  std::string studentNo;
-  std::string classRecord;
-};
-
 std::vector<struct StudentRecord> students;
 
 
 // STUB(addStudent)
 //Method to check through the vector for a record with the same student no.
 //If a duplicate is found it returns the index, else -1
-int isDuplicate(std::string searchNo){
+int MLLJET002::isDuplicate(std::string searchNo){
   std::string studentNo;
   for(std::vector<int>::size_type i = 0; i != students.size(); i++) {
           studentNo = students[i].studentNo;
@@ -38,7 +31,10 @@ int isDuplicate(std::string searchNo){
 }
   return -1;
 }
-void addStudent(){
+
+//Adds student to the database. When checking for duplicates it assumes that the records have
+//been loaded from the text file.
+void MLLJET002::addStudent(){
   struct StudentRecord student;
   // bool repeat = true;
 
@@ -86,9 +82,8 @@ void addStudent(){
 }
 
 
-// STUB(readDB)
-
-int getAvg(std::string line){
+//Returns the average given the class record
+int MLLJET002::getAvg(std::string line){
   std::istringstream ss(line);
   std::string token;
   int numerator = 0;
@@ -103,6 +98,7 @@ int getAvg(std::string line){
   return numerator/denominator;
 }
 
+//Returns a vector with the lines in the text file
 std::vector<std::string> getLines(){
   std::vector<std::string> lines;
   std::string line;
@@ -122,7 +118,7 @@ std::vector<std::string> getLines(){
 }
 
 //Returns a student object from a string with student data
-struct StudentRecord getStudent(std::string line){
+struct StudentRecord MLLJET002::getStudent(std::string line){
   struct StudentRecord student;
   std::istringstream ss(line);
   std::string token;
@@ -138,8 +134,9 @@ struct StudentRecord getStudent(std::string line){
 
 }
 
-//
-void readStudents(std::vector<std::string> v){
+//Takes the vector with the file lines as a parameter and loads them into the students vector
+//Using the getStudent function
+void MLLJET002::readStudents(std::vector<std::string> v){
   for(std::vector<int>::size_type i = 0; i != v.size(); i++) {
     // std::cout<<getStudent(v[i]).name;
     students.push_back(getStudent(v[i]));
@@ -147,11 +144,14 @@ void readStudents(std::vector<std::string> v){
 
 }
 
-void readDB(){
+//Loads the file records into the students vector by using the functions defined above
+void MLLJET002::readDB(){
   readStudents(getLines());
 
 }
-void saveDB(){
+
+//Outputs the vector to a file in the specified format (comma seperated)
+void MLLJET002::saveDB(){
   std::ofstream dbFile;
   dbFile.open("db.txt",std::ios::app);
   std::string name, surname, studentNo, classRecord;
@@ -167,7 +167,9 @@ void saveDB(){
 
     std::cout << "Database Saved!" << '\n';
 }
-void displayStudentData(){
+
+//Displays details of a student when given a student number
+void MLLJET002::displayStudentData(){
   bool found = false;
   std::string searchNo;
   std::cout << "\nEnter Student Number:" << '\n';
@@ -189,7 +191,7 @@ void displayStudentData(){
 if(found == false)std::cout << "Student not found." << '\n';
 
 }
-void gradeStudent(){
+void MLLJET002::gradeStudent(){
   bool found = false;
   std::string searchNo;
   std::cout << "\nEnter Student Number:" << '\n';
@@ -210,6 +212,7 @@ if(found == false)std::cout << "Student not found." << '\n';
 else std::cout << "Average: "<<avg << '\n';
 }
 
+//Clears the terminal
 void MLLJET002::clear(){
 system("clear");
 }
@@ -222,7 +225,7 @@ std::string options [6] = {
   "4: Grade student",
   "q: Quit"
 };
-
+//Displays the menu
 int MLLJET002::displayMenu(){
   std::cout<<"\nEnter a number from below (or anything else to quit ) and hit the Enter key..."<<std::endl;
 
@@ -251,7 +254,7 @@ int MLLJET002::displayMenu(){
       gradeStudent();
       break;
     default:
-      std::cout << "Are you sure? y/n" <<std::endl;
+      std::cout << "Are you sure you want to quit? y/n" <<std::endl;
       char input;
       std::cin>>input;
       if(input=='y'){
